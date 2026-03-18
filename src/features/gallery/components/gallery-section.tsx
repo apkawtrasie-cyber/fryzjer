@@ -122,19 +122,19 @@ export function GallerySection() {
 
       {/* Lightbox / Dialog */}
       <Dialog open={selectedImageIndex !== null} onOpenChange={(open) => !open && closeLightbox()}>
-        <DialogContent className="max-w-[100vw] max-h-[100vh] w-screen h-screen p-0 m-0 bg-black/95 border-none shadow-none flex flex-col justify-center items-center [&>button]:hidden sm:[&>button]:flex sm:[&>button]:right-6 sm:[&>button]:top-6 sm:[&>button]:text-white sm:[&>button]:hover:text-[#B38728] sm:[&>button]:w-10 sm:[&>button]:h-10 sm:[&>button]:bg-black/50 sm:[&>button]:rounded-full sm:[&>button]:items-center sm:[&>button]:justify-center">
+        <DialogContent className="max-w-[100vw] max-h-[100dvh] w-screen h-[100dvh] p-0 m-0 bg-black/95 border-none shadow-none [&>button]:hidden">
           <VisuallyHidden>
             <DialogTitle>Podgląd zdjęcia</DialogTitle>
             <DialogDescription>Powiększone zdjęcie z galerii</DialogDescription>
           </VisuallyHidden>
           
-          <div className="absolute top-4 right-4 sm:hidden z-50">
+          <div className="absolute top-16 sm:top-8 right-4 sm:right-8 z-[100]">
             <button 
               onClick={closeLightbox}
-              className="w-10 h-10 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:text-[#B38728] transition-colors"
+              className="w-12 h-12 bg-black/80 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:text-[#B38728] hover:bg-black transition-all shadow-xl border border-white/20"
               aria-label="Zamknij"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
           </div>
 
@@ -146,32 +146,31 @@ export function GallerySection() {
             }}
             className="w-full h-full flex items-center justify-center"
           >
-            <CarouselContent className="h-full ml-0">
+            <CarouselContent className="h-full ml-0 flex items-center">
               {siteContent.gallery.images.map((image, index) => (
-                <CarouselItem key={index} className="h-full w-full flex items-center justify-center p-0 pl-0 relative">
-                  <div className="relative w-full h-full max-h-[100dvh] flex items-center justify-center p-2 sm:p-12">
-                    <div className="relative w-full h-full max-w-5xl mx-auto">
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        className="object-contain"
-                        sizes="100vw"
-                        priority={index === selectedImageIndex}
-                      />
+                <CarouselItem key={index} className="h-full w-full p-0 pl-0 flex items-center justify-center">
+                  <div className="relative w-full h-[75dvh] sm:h-[85dvh] flex flex-col items-center justify-center px-4">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={1200}
+                      height={1200}
+                      className="w-full h-full object-contain"
+                      sizes="100vw"
+                      priority={index === selectedImageIndex}
+                    />
+                    <div className="absolute bottom-0 sm:-bottom-8 left-0 right-0 text-center pointer-events-none px-4">
+                      <span className="bg-black/80 backdrop-blur-md text-[#B38728] px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-widest uppercase inline-block shadow-lg border border-[#B38728]/20">
+                        {image.alt}
+                      </span>
                     </div>
-                  </div>
-                  <div className="absolute bottom-6 sm:bottom-12 left-0 right-0 text-center pointer-events-none">
-                    <span className="bg-black/60 backdrop-blur-md text-[#B38728] px-4 py-2 rounded-full text-sm font-bold tracking-widest uppercase inline-block">
-                      {image.alt}
-                    </span>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
             <div className="hidden sm:block">
-              <CarouselPrevious className="left-6 w-12 h-12 bg-black/50 border-white/10 text-white hover:bg-[#B38728] hover:text-black transition-all" />
-              <CarouselNext className="right-6 w-12 h-12 bg-black/50 border-white/10 text-white hover:bg-[#B38728] hover:text-black transition-all" />
+              <CarouselPrevious className="left-8 w-14 h-14 bg-black/60 border-white/20 text-white hover:bg-[#B38728] hover:text-black transition-all shadow-xl" />
+              <CarouselNext className="right-8 w-14 h-14 bg-black/60 border-white/20 text-white hover:bg-[#B38728] hover:text-black transition-all shadow-xl" />
             </div>
           </Carousel>
         </DialogContent>
