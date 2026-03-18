@@ -12,7 +12,7 @@ export function HeroSection() {
       {/* Background Image / Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=2874&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=65&w=1200&auto=format&fit=crop&fit=crop&crop=center"
           alt="Vogue Hair Studio Interior"
           fill
           priority
