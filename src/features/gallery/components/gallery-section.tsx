@@ -5,6 +5,7 @@ import { slideInFromBottom, staggerContainer } from "@/lib/variants";
 import { siteContent } from "@/config/site-content";
 import Image from "next/image";
 import { useState } from "react";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
@@ -143,23 +144,43 @@ export function GallerySection() {
             opts={{ 
               startIndex: selectedImageIndex ?? 0,
               loop: true,
+              watchDrag: false, // Disable drag to allow pinch-zoom to work better without accidentally swiping
             }}
             className="w-full h-full flex items-center justify-center"
           >
             <CarouselContent className="h-full ml-0 flex items-center">
               {siteContent.gallery.images.map((image, index) => (
                 <CarouselItem key={index} className="h-full w-full p-0 pl-0 flex items-center justify-center">
-                  <div className="relative w-full h-[75dvh] sm:h-[85dvh] flex flex-col items-center justify-center px-4">
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      width={1200}
-                      height={1200}
-                      className="w-full h-full object-contain"
-                      sizes="100vw"
-                      priority={index === selectedImageIndex}
-                    />
-                    <div className="absolute bottom-0 sm:-bottom-8 left-0 right-0 text-center pointer-events-none px-4">
+                  <div className="relative w-full h-[80dvh] sm:h-[90dvh] lg:h-[95dvh] flex flex-col items-center justify-center px-2 sm:px-12">
+                    <TransformWrapper
+                      initialScale={1}
+                      minScale={1}
+                      maxScale={4}
+                      centerOnInit
+                      wheel={{ step: 0.1 }}
+                      pinch={{ step: 5 }}
+                      doubleClick={{ step: 0.5 }}
+                    >
+                      <TransformComponent wrapperClass="!w-full !h-full flex items-center justify-center" contentClass="!w-full !h-full flex items-center justify-center">
+                        <div className="relative w-full h-full flex items-center justify-center cursor-zoom-in">
+                          <Image
+                            src={image.src}
+                            alt={image.alt}
+                            width={1600}
+                            height={1600}
+                            className="w-full h-full object-contain"
+                            sizes="100vw"
+                            priority={index === selectedImageIndex}
+                            draggable={false}
+                          />
+                        </div>
+                      </TransformComponent>
+                    </TransformWrapper>
+                    <div className="absolute bottom-0 sm:bottom-4 left-0 right-0 text-center pointer-events-none px-4 flex flex-col items-center gap-2">
+                      <div className="flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full text-white/70 text-[10px] sm:text-xs">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                        <span>Powiększ zdjęcie</span>
+                      </div>
                       <span className="bg-black/80 backdrop-blur-md text-[#B38728] px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-widest uppercase inline-block shadow-lg border border-[#B38728]/20">
                         {image.alt}
                       </span>
@@ -169,8 +190,8 @@ export function GallerySection() {
               ))}
             </CarouselContent>
             <div className="hidden sm:block">
-              <CarouselPrevious className="left-8 w-14 h-14 bg-black/60 border-white/20 text-white hover:bg-[#B38728] hover:text-black transition-all shadow-xl" />
-              <CarouselNext className="right-8 w-14 h-14 bg-black/60 border-white/20 text-white hover:bg-[#B38728] hover:text-black transition-all shadow-xl" />
+              <CarouselPrevious className="left-4 lg:left-8 w-12 h-12 lg:w-14 lg:h-14 bg-black/60 border-white/20 text-white hover:bg-[#B38728] hover:text-black transition-all shadow-xl" />
+              <CarouselNext className="right-4 lg:right-8 w-12 h-12 lg:w-14 lg:h-14 bg-black/60 border-white/20 text-white hover:bg-[#B38728] hover:text-black transition-all shadow-xl" />
             </div>
           </Carousel>
         </DialogContent>
