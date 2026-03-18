@@ -48,12 +48,12 @@ export function GallerySection() {
           </div>
 
           {/* Grid Gallery */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6 lg:gap-8 max-w-6xl mx-auto">
             {siteContent.gallery.images.map((image, index) => (
               <motion.div
                 key={index}
                 variants={slideInFromBottom}
-                className={`relative group overflow-hidden rounded-2xl aspect-[4/5] cursor-pointer ${
+                className={`relative group overflow-hidden rounded-xl md:rounded-2xl aspect-[4/5] cursor-pointer ${
                   index === 0 ? "col-span-2 md:col-span-1" : ""
                 }`}
                 onClick={() => openLightbox(index)}
@@ -66,6 +66,8 @@ export function GallerySection() {
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                   sizes="(max-width: 768px) 50vw, 33vw"
+                  loading="lazy"
+                  quality={85}
                 />
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/90 via-[#0a0a0a]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
