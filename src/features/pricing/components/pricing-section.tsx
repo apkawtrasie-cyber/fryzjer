@@ -58,9 +58,9 @@ export function PricingSection() {
                     {category.services.map((service, index) => (
                       <div key={index} className="group relative pl-4 md:pl-8 border-l border-transparent hover:border-[#B38728]/30 transition-colors duration-300">
                         <div className="flex flex-col md:flex-row md:justify-between md:items-baseline gap-2 mb-2">
-                          <h4 className="font-serif text-xl md:text-2xl text-[#fafafa] font-medium tracking-wide">
+                          <p className="font-serif text-xl md:text-2xl text-[#fafafa] font-medium tracking-wide">
                             {service.name}
-                          </h4>
+                          </p>
                           <div className="flex items-center gap-4 text-[#B38728]">
                             <span className="font-sans font-bold text-lg md:text-xl whitespace-nowrap">
                               {service.price}

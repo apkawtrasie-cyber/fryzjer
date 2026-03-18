@@ -44,9 +44,9 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-serif text-base md:text-lg font-bold text-[#fafafa] mb-4 md:mb-6 tracking-wide">
+            <h3 className="font-serif text-base md:text-lg font-bold text-[#fafafa] mb-4 md:mb-6 tracking-wide">
               KONTAKT
-            </h4>
+            </h3>
             <ul className="space-y-3 md:space-y-4 text-sm md:text-base text-[#a3a3a3]">
               <li className="leading-relaxed">{siteContent.contact.address}</li>
               <li>
@@ -64,9 +64,9 @@ export function Footer() {
 
           {/* Hours */}
           <div>
-            <h4 className="font-serif text-base md:text-lg font-bold text-[#fafafa] mb-4 md:mb-6 tracking-wide">
+            <h3 className="font-serif text-base md:text-lg font-bold text-[#fafafa] mb-4 md:mb-6 tracking-wide">
               GODZINY OTWARCIA
-            </h4>
+            </h3>
             <ul className="space-y-3 md:space-y-4 text-sm md:text-base text-[#a3a3a3]">
               {siteContent.contact.openingHours.map((time, i) => (
                 <li key={i} className="flex justify-between gap-4">

@@ -52,7 +52,7 @@ export function AboutSection() {
               
               {/* Name Tag */}
               <div className="absolute bottom-8 left-8 right-8 bg-[#0a0a0a]/80 backdrop-blur-md border border-[#B38728]/30 rounded-2xl p-6">
-                <h3 className="font-serif text-2xl md:text-3xl text-[#B38728] mb-1">Elena Kowalska</h3>
+                <p className="font-serif text-2xl md:text-3xl text-[#B38728] mb-1 font-bold">Elena Kowalska</p>
                 <p className="text-[#a3a3a3] text-sm tracking-wider">Założycielka & Master Stylist</p>
               </div>
             </motion.div>
@@ -93,7 +93,7 @@ export function AboutSection() {
                     <Award className="w-5 h-5 md:w-6 md:h-6" />
                   </div>
                   <div>
-                    <h4 className="font-serif text-lg md:text-xl text-[#fafafa] mb-1">15+ lat</h4>
+                    <p className="font-serif text-lg md:text-xl text-[#fafafa] mb-1 font-semibold">15+ lat</p>
                     <p className="text-[#a3a3a3] text-xs md:text-sm">Doświadczenia</p>
                   </div>
                 </div>
@@ -103,7 +103,7 @@ export function AboutSection() {
                     <Heart className="w-5 h-5 md:w-6 md:h-6" />
                   </div>
                   <div>
-                    <h4 className="font-serif text-lg md:text-xl text-[#fafafa] mb-1">5000+</h4>
+                    <p className="font-serif text-lg md:text-xl text-[#fafafa] mb-1 font-semibold">5000+</p>
                     <p className="text-[#a3a3a3] text-xs md:text-sm">Zadowolonych klientów</p>
                   </div>
                 </div>
@@ -113,7 +113,7 @@ export function AboutSection() {
                     <Scissors className="w-5 h-5 md:w-6 md:h-6" />
                   </div>
                   <div>
-                    <h4 className="font-serif text-lg md:text-xl text-[#fafafa] mb-1">Premium</h4>
+                    <p className="font-serif text-lg md:text-xl text-[#fafafa] mb-1 font-semibold">Premium</p>
                     <p className="text-[#a3a3a3] text-xs md:text-sm">Produkty</p>
                   </div>
                 </div>
@@ -123,7 +123,7 @@ export function AboutSection() {
                     <Sparkles className="w-5 h-5 md:w-6 md:h-6" />
                   </div>
                   <div>
-                    <h4 className="font-serif text-lg md:text-xl text-[#fafafa] mb-1">Vogue</h4>
+                    <p className="font-serif text-lg md:text-xl text-[#fafafa] mb-1 font-semibold">Vogue</p>
                     <p className="text-[#a3a3a3] text-xs md:text-sm">Standard</p>
                   </div>
                 </div>

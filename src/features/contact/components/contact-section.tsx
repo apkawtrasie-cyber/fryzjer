@@ -50,7 +50,7 @@ export function ContactSection() {
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-serif text-xl text-[#fafafa] mb-2">Adres Salonu</h4>
+                    <h3 className="font-serif text-xl text-[#fafafa] mb-2">Adres Salonu</h3>
                     <p className="text-[#a3a3a3] leading-relaxed">
                       {siteContent.global.name}<br />
                       {siteContent.contact.address}
@@ -72,7 +72,7 @@ export function ContactSection() {
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-serif text-xl text-[#fafafa] mb-2">Telefon</h4>
+                    <h3 className="font-serif text-xl text-[#fafafa] mb-2">Telefon</h3>
                     <p className="text-[#a3a3a3] mb-4">
                       Zadzwoń do nas, aby umówić wizytę lub skonsultować metamorfozę.
                     </p>
@@ -92,7 +92,7 @@ export function ContactSection() {
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-serif text-xl text-[#fafafa] mb-2">Email</h4>
+                    <h3 className="font-serif text-xl text-[#fafafa] mb-2">Email</h3>
                     <a href={`mailto:${siteContent.contact.email}`} className="text-[#a3a3a3] hover:text-[#B38728] transition-colors">
                       {siteContent.contact.email}
                     </a>
@@ -105,7 +105,7 @@ export function ContactSection() {
                     <Clock className="w-5 h-5" />
                   </div>
                   <div className="w-full max-w-sm">
-                    <h4 className="font-serif text-xl text-[#fafafa] mb-4">Godziny Otwarcia</h4>
+                    <h3 className="font-serif text-xl text-[#fafafa] mb-4">Godziny Otwarcia</h3>
                     <ul className="space-y-2 text-[#a3a3a3] text-sm">
                       {siteContent.contact.openingHours.map((time, i) => (
                         <li key={i} className="flex justify-between border-b border-white/5 pb-2">

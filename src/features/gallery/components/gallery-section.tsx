@@ -98,9 +98,9 @@ export function GallerySection() {
                   </svg>
                 </div>
                 
-                <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#fafafa] mb-4">
+                <p className="font-serif text-2xl md:text-3xl font-bold text-[#fafafa] mb-4">
                   {siteContent.social.title}
-                </h3>
+                </p>
                 
                 <p className="text-[#a3a3a3] text-sm md:text-base mb-8">
                   {siteContent.social.subtitle}
