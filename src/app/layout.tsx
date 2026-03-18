@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   openGraph: seo.openGraph,
   twitter: seo.twitter,
   icons: {
-    icon: '/favicon_hair.svg',
-    shortcut: '/favicon_hair.svg',
-    apple: '/favicon_hair.svg',
+    icon: '/images/logo/favicon_hair.svg',
+    shortcut: '/images/logo/favicon_hair.svg',
+    apple: '/images/logo/favicon_hair.svg',
   },
 };
 
