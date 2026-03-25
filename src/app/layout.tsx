@@ -4,6 +4,7 @@ import "./globals.css";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { seo } from "@/lib/seo";
+import { Providers } from "./providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,11 +43,13 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${cormorant.variable} font-sans antialiased bg-background text-foreground min-h-screen flex flex-col overflow-x-hidden`}
       >
-        <main className="flex-1 pb-24 lg:pb-0 overflow-hidden">
-          {children}
-        </main>
-        <MobileNav />
-        <ScrollToTop />
+        <Providers>
+          <main className="flex-1 pb-24 lg:pb-0 overflow-hidden">
+            {children}
+          </main>
+          <MobileNav />
+          <ScrollToTop />
+        </Providers>
       </body>
     </html>
   );

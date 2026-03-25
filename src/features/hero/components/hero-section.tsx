@@ -5,8 +5,10 @@ import { slideInFromBottom, fadeIn } from "@/lib/variants";
 import { Button } from "@/components/ui/button";
 import { siteContent } from "@/config/site-content";
 import Image from "next/image";
+import { useLanguage } from "@/i18n/context";
 
 export function HeroSection() {
+  const { t } = useLanguage();
   return (
     <section id="home" className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden pt-16 md:pt-20 w-full">
       {/* Background Image / Overlay */}
@@ -42,7 +44,7 @@ export function HeroSection() {
             variants={slideInFromBottom}
             className="text-[#fafafa] text-base sm:text-lg md:text-xl font-light tracking-wide mb-8 md:mb-12 max-w-2xl mx-auto drop-shadow-md px-4"
           >
-            {siteContent.hero.subtitle}
+            {t.hero.subtitle}
           </motion.p>
 
           <motion.div 
@@ -54,7 +56,7 @@ export function HeroSection() {
                 size="lg"
                 className="bg-gradient-to-r from-[#B38728] via-[#FBF5B7] to-[#AA771C] text-[#0a0a0a] font-bold tracking-widest hover:opacity-90 rounded-none px-12 py-8 text-sm md:text-base w-full sm:w-auto shadow-[0_0_30px_rgba(179,135,40,0.3)] transition-all hover:shadow-[0_0_50px_rgba(179,135,40,0.5)]"
               >
-                ZADZWOŃ
+                {t.hero.cta}
               </Button>
             </a>
           </motion.div>

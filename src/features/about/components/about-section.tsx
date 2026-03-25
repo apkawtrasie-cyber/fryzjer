@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { slideInFromBottom, slideInFromLeft, slideInFromRight } from "@/lib/variants";
 import { Award, Heart, Scissors, Sparkles } from "lucide-react";
 import Image from "next/image";
+import { useLanguage } from "@/i18n/context";
 
 export function AboutSection() {
+  const { t } = useLanguage();
   return (
     <section id="o-nas" className="py-20 md:py-32 relative bg-[#171717] min-h-screen flex items-center border-t border-white/5 scroll-mt-14 md:scroll-mt-20 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -19,7 +21,7 @@ export function AboutSection() {
               variants={slideInFromBottom}
               className="font-serif text-3xl md:text-5xl lg:text-6xl font-bold tracking-widest text-[#B38728] mb-4 uppercase"
             >
-              O Nas
+              {t.about.title}
             </motion.h2>
             <motion.p 
               initial="hidden"
@@ -28,7 +30,7 @@ export function AboutSection() {
               variants={slideInFromBottom}
               className="text-[#a3a3a3] text-sm md:text-base tracking-[0.2em] uppercase max-w-2xl mx-auto"
             >
-              Pasja, doświadczenie i miłość do piękna
+              {t.about.subtitle}
             </motion.p>
           </div>
 
@@ -53,7 +55,7 @@ export function AboutSection() {
               {/* Name Tag */}
               <div className="absolute bottom-8 left-8 right-8 bg-[#0a0a0a]/80 backdrop-blur-md border border-[#B38728]/30 rounded-2xl p-6">
                 <p className="font-serif text-2xl md:text-3xl text-[#B38728] mb-1 font-bold">Elena Kowalska</p>
-                <p className="text-[#a3a3a3] text-sm tracking-wider">Założycielka & Master Stylist</p>
+                <p className="text-[#a3a3a3] text-sm tracking-wider">{t.about.founderTitle}</p>
               </div>
             </motion.div>
 
@@ -67,22 +69,15 @@ export function AboutSection() {
             >
               <div className="space-y-4 md:space-y-6">
                 <p className="text-[#fafafa] text-base md:text-lg leading-relaxed">
-                  Vogue Hair Studio to efekt 15 lat pasji i nieustannego dążenia do perfekcji. 
-                  Wszystko zaczęło się od małego salonu w centrum Warszawy, gdzie Elena Kowalska – 
-                  absolwentka prestiżowej Akademii Fryzjerskiej w Paryżu – postanowiła stworzyć 
-                  miejsce, w którym każdy klient poczuje się wyjątkowo.
+                  {t.about.story1}
                 </p>
 
                 <p className="text-[#a3a3a3] text-sm md:text-base leading-relaxed">
-                  "Wierzę, że fryzjerstwo to sztuka. Każde cięcie, każdy kolor to opowieść, 
-                  którą tworzymy wspólnie z klientem. Moja misja to nie tylko metamorfoza włosów, 
-                  ale przede wszystkim budowanie pewności siebie i podkreślanie naturalnego piękna."
+                  {t.about.story2}
                 </p>
 
                 <p className="text-[#a3a3a3] text-sm md:text-base leading-relaxed">
-                  Dziś Vogue Hair Studio to zespół wykwalifikowanych stylistów, którzy dzielą 
-                  tę samą filozofię – indywidualne podejście, najwyższa jakość produktów i 
-                  nieustanne podnoszenie kwalifikacji na międzynarodowych szkoleniach.
+                  {t.about.story3}
                 </p>
               </div>
 
@@ -94,7 +89,7 @@ export function AboutSection() {
                   </div>
                   <div>
                     <p className="font-serif text-lg md:text-xl text-[#fafafa] mb-1 font-semibold">15+ lat</p>
-                    <p className="text-[#a3a3a3] text-xs md:text-sm">Doświadczenia</p>
+                    <p className="text-[#a3a3a3] text-xs md:text-sm">{t.about.stats.experience}</p>
                   </div>
                 </div>
 
@@ -104,7 +99,7 @@ export function AboutSection() {
                   </div>
                   <div>
                     <p className="font-serif text-lg md:text-xl text-[#fafafa] mb-1 font-semibold">5000+</p>
-                    <p className="text-[#a3a3a3] text-xs md:text-sm">Zadowolonych klientów</p>
+                    <p className="text-[#a3a3a3] text-xs md:text-sm">{t.about.stats.clients}</p>
                   </div>
                 </div>
 
@@ -114,7 +109,7 @@ export function AboutSection() {
                   </div>
                   <div>
                     <p className="font-serif text-lg md:text-xl text-[#fafafa] mb-1 font-semibold">Premium</p>
-                    <p className="text-[#a3a3a3] text-xs md:text-sm">Produkty</p>
+                    <p className="text-[#a3a3a3] text-xs md:text-sm">{t.about.stats.products}</p>
                   </div>
                 </div>
 
@@ -124,7 +119,7 @@ export function AboutSection() {
                   </div>
                   <div>
                     <p className="font-serif text-lg md:text-xl text-[#fafafa] mb-1 font-semibold">Vogue</p>
-                    <p className="text-[#a3a3a3] text-xs md:text-sm">Standard</p>
+                    <p className="text-[#a3a3a3] text-xs md:text-sm">{t.about.stats.standard}</p>
                   </div>
                 </div>
               </div>

@@ -1,30 +1,27 @@
 "use client";
 
-import { Home, Calendar, Scissors, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { siteContent } from "@/config/site-content";
-
-const navItems = [
-  { label: "USŁUGI", href: "#uslugi" },
-  { label: "GALERIA", href: "#galeria" },
-  { label: "O NAS", href: "#o-nas" },
-  { label: "KONTAKT", href: "#kontakt" },
-];
+import { useLanguage } from "@/i18n/context";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
 
 export function Header() {
-  const pathname = usePathname();
+  const { t } = useLanguage();
 
-  // Handle smooth scrolling manually for hash links
+  const navItems = [
+    { label: t.nav.services, href: "#uslugi" },
+    { label: t.nav.gallery, href: "#galeria" },
+    { label: t.nav.about, href: "#o-nas" },
+    { label: t.nav.contact, href: "#kontakt" },
+  ];
+
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('#')) {
       e.preventDefault();
       const element = document.querySelector(href);
       if (element) {
-        // Offset for fixed header
         const y = element.getBoundingClientRect().top + window.scrollY - 80;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
@@ -49,7 +46,7 @@ export function Header() {
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navItems.map((item) => (
               <a
-                key={item.label}
+                key={item.href}
                 href={item.href}
                 onClick={(e) => handleClick(e, item.href)}
                 className="text-sm font-medium tracking-wider transition-colors text-[#fafafa] hover:text-[#B38728] whitespace-nowrap"
@@ -59,13 +56,14 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center z-10 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3 z-10 shrink-0">
+            <LanguageSwitcher />
             <a href={`tel:${siteContent.contact.phone.replace(/\s/g, '')}`}>
               <Button
                 size="sm"
                 className="bg-gradient-to-r from-[#B38728] to-[#AA771C] text-[#0a0a0a] font-bold tracking-wide hover:opacity-90 rounded-none px-2 sm:px-3 md:px-4 lg:px-6 xl:px-8 h-8 sm:h-9 md:h-10 text-[9px] sm:text-[10px] md:text-xs lg:text-sm whitespace-nowrap"
               >
-                ZADZWOŃ
+                {t.nav.call}
               </Button>
             </a>
           </div>

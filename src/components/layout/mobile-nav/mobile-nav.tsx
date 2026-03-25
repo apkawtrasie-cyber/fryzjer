@@ -2,21 +2,22 @@
 
 import { motion } from "framer-motion";
 import { slideInFromBottom } from "@/lib/variants";
-import { Home, Calendar, Scissors, Phone, Info } from "lucide-react";
-import Link from "next/link";
+import { Home, Scissors, Phone, Info } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
-
-const navItems = [
-  { icon: Home, label: "HOME", href: "#home" },
-  { icon: Scissors, label: "USŁUGI", href: "#uslugi" },
-  { icon: Info, label: "O NAS", href: "#o-nas" },
-  { icon: Phone, label: "KONTAKT", href: "#kontakt" },
-];
+import { useLanguage } from "@/i18n/context";
 
 export function MobileNav() {
+  const { t } = useLanguage();
   const [activeSection, setActiveSection] = useState("#home");
   const isClickingRef = useRef(false);
+
+  const navItems = [
+    { icon: Home, label: t.nav.home, href: "#home" },
+    { icon: Scissors, label: t.nav.services, href: "#uslugi" },
+    { icon: Info, label: t.nav.about, href: "#o-nas" },
+    { icon: Phone, label: t.nav.contact, href: "#kontakt" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {

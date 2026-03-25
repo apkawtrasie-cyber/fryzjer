@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { slideInFromBottom, staggerContainer } from "@/lib/variants";
 import { siteContent } from "@/config/site-content";
 import { Scissors, Palette, Sparkles } from "lucide-react";
+import { useLanguage } from "@/i18n/context";
 import Image from "next/image";
 
 const iconMap = {
@@ -13,6 +14,7 @@ const iconMap = {
 };
 
 export function PricingSection() {
+  const { t } = useLanguage();
   return (
     <section id="uslugi" className="py-20 md:py-24 lg:py-32 relative bg-[#0a0a0a] min-h-screen scroll-mt-14 md:scroll-mt-20 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 max-w-5xl relative z-10">
@@ -28,20 +30,21 @@ export function PricingSection() {
               variants={slideInFromBottom}
               className="font-serif text-3xl md:text-5xl font-bold tracking-widest text-[#B38728] mb-4 uppercase"
             >
-              {siteContent.pricing.title}
+              {t.pricing.title}
             </motion.h2>
             <motion.p 
               variants={slideInFromBottom}
               className="text-[#a3a3a3] text-sm md:text-base tracking-[0.2em] uppercase"
             >
-              {siteContent.pricing.subtitle}
+              {t.pricing.subtitle}
             </motion.p>
           </div>
 
           {/* Pricing Categories */}
           <div className="space-y-16">
-            {siteContent.pricing.categories.map((category) => {
+            {siteContent.pricing.categories.map((category, catIdx) => {
               const Icon = iconMap[category.icon as keyof typeof iconMap];
+              const tCategory = t.pricing.categories[catIdx];
 
               return (
                 <motion.div key={category.id} variants={slideInFromBottom} className="relative">
@@ -50,7 +53,7 @@ export function PricingSection() {
                       {Icon && <Icon className="w-6 h-6" strokeWidth={1.5} />}
                     </div>
                     <h3 className="font-sans font-bold text-lg md:text-xl tracking-widest text-[#B38728] uppercase">
-                      {category.name}
+                      {tCategory?.name ?? category.name}
                     </h3>
                   </div>
 
@@ -59,7 +62,7 @@ export function PricingSection() {
                       <div key={index} className="group relative pl-4 md:pl-8 border-l border-transparent hover:border-[#B38728]/30 transition-colors duration-300">
                         <div className="flex flex-col md:flex-row md:justify-between md:items-baseline gap-2 mb-2">
                           <p className="font-serif text-xl md:text-2xl text-[#fafafa] font-medium tracking-wide">
-                            {service.name}
+                            {tCategory?.services[index]?.name ?? service.name}
                           </p>
                           <div className="flex items-center gap-4 text-[#B38728]">
                             <span className="font-sans font-bold text-lg md:text-xl whitespace-nowrap">
@@ -70,7 +73,7 @@ export function PricingSection() {
                         
                         <div className="flex flex-col md:flex-row md:justify-between gap-4 text-[#a3a3a3] text-sm">
                           <p className="max-w-xl leading-relaxed font-light">
-                            {service.description}
+                            {tCategory?.services[index]?.description ?? service.description}
                           </p>
                           <div className="flex items-center gap-2 whitespace-nowrap text-xs tracking-wider uppercase">
                             <span className="w-4 h-[1px] bg-[#B38728]/50" />

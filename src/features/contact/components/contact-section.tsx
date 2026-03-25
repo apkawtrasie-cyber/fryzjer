@@ -6,8 +6,10 @@ import { siteContent } from "@/config/site-content";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import Image from "next/image";
+import { useLanguage } from "@/i18n/context";
 
 export function ContactSection() {
+  const { t } = useLanguage();
   return (
     <section id="kontakt" className="py-20 md:py-24 lg:py-32 relative bg-[#0a0a0a] min-h-screen flex items-center scroll-mt-14 md:scroll-mt-20 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -21,7 +23,7 @@ export function ContactSection() {
               variants={slideInFromBottom}
               className="font-serif text-3xl md:text-5xl font-bold tracking-widest text-[#B38728] mb-4 uppercase"
             >
-              Kontakt
+              {t.contact.title}
             </motion.h2>
             <motion.p 
               initial="hidden"
@@ -30,7 +32,7 @@ export function ContactSection() {
               variants={slideInFromBottom}
               className="text-[#a3a3a3] text-sm md:text-base tracking-[0.2em] uppercase"
             >
-              Umów się na wizytę
+              {t.contact.subtitle}
             </motion.p>
           </div>
 
@@ -50,7 +52,7 @@ export function ContactSection() {
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-serif text-xl text-[#fafafa] mb-2">Adres Salonu</h3>
+                    <h3 className="font-serif text-xl text-[#fafafa] mb-2">{t.contact.addressLabel}</h3>
                     <p className="text-[#a3a3a3] leading-relaxed">
                       {siteContent.global.name}<br />
                       {siteContent.contact.address}
@@ -61,7 +63,7 @@ export function ContactSection() {
                       rel="noopener noreferrer"
                       className="inline-block mt-3 text-sm text-[#B38728] hover:text-[#FBF5B7] transition-colors border-b border-[#B38728]/30 pb-0.5"
                     >
-                      Jak dojechać? &rarr;
+                      {t.contact.howToGet}
                     </a>
                   </div>
                 </div>
@@ -72,15 +74,15 @@ export function ContactSection() {
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-serif text-xl text-[#fafafa] mb-2">Telefon</h3>
+                    <h3 className="font-serif text-xl text-[#fafafa] mb-2">{t.contact.phoneLabel}</h3>
                     <p className="text-[#a3a3a3] mb-4">
-                      Zadzwoń do nas, aby umówić wizytę lub skonsultować metamorfozę.
+                      {t.contact.callDesc}
                     </p>
                     <a href={`tel:${siteContent.contact.phone.replace(/\s/g, '')}`}>
                       <Button
                         className="bg-gradient-to-r from-[#B38728] to-[#AA771C] text-[#0a0a0a] font-bold tracking-wider hover:opacity-90 rounded-none px-8 h-12"
                       >
-                        ZADZWOŃ: {siteContent.contact.phone}
+                        {t.contact.callButton}: {siteContent.contact.phone}
                       </Button>
                     </a>
                   </div>
@@ -92,7 +94,7 @@ export function ContactSection() {
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-serif text-xl text-[#fafafa] mb-2">Email</h3>
+                    <h3 className="font-serif text-xl text-[#fafafa] mb-2">{t.contact.emailLabel}</h3>
                     <a href={`mailto:${siteContent.contact.email}`} className="text-[#a3a3a3] hover:text-[#B38728] transition-colors">
                       {siteContent.contact.email}
                     </a>
@@ -105,9 +107,9 @@ export function ContactSection() {
                     <Clock className="w-5 h-5" />
                   </div>
                   <div className="w-full max-w-sm">
-                    <h3 className="font-serif text-xl text-[#fafafa] mb-4">Godziny Otwarcia</h3>
+                    <h3 className="font-serif text-xl text-[#fafafa] mb-4">{t.contact.hoursLabel}</h3>
                     <ul className="space-y-2 text-[#a3a3a3] text-sm">
-                      {siteContent.contact.openingHours.map((time, i) => (
+                      {t.contact.openingHours.map((time, i) => (
                         <li key={i} className="flex justify-between border-b border-white/5 pb-2">
                           <span>{time.day}</span>
                           <span className="text-[#fafafa]">{time.hours}</span>

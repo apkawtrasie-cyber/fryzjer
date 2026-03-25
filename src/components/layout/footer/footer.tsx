@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { siteContent } from "@/config/site-content";
 import { Instagram, Facebook } from "lucide-react";
+import { useLanguage } from "@/i18n/context";
 
 export function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="bg-[#0a0a0a] border-t border-white/5 pt-12 md:pt-16 pb-24 md:pb-16 mt-auto">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
@@ -20,7 +24,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-[#a3a3a3] text-sm md:text-base max-w-md mb-6 md:mb-8 leading-relaxed">
-              {siteContent.global.description}
+              {t.footer.description}
             </p>
             <div className="flex gap-4">
               <a
@@ -45,7 +49,7 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h3 className="font-serif text-base md:text-lg font-bold text-[#fafafa] mb-4 md:mb-6 tracking-wide">
-              KONTAKT
+              {t.footer.contactHeading}
             </h3>
             <ul className="space-y-3 md:space-y-4 text-sm md:text-base text-[#a3a3a3]">
               <li className="leading-relaxed">{siteContent.contact.address}</li>
@@ -65,10 +69,10 @@ export function Footer() {
           {/* Hours */}
           <div>
             <h3 className="font-serif text-base md:text-lg font-bold text-[#fafafa] mb-4 md:mb-6 tracking-wide">
-              GODZINY OTWARCIA
+              {t.footer.hoursHeading}
             </h3>
             <ul className="space-y-3 md:space-y-4 text-sm md:text-base text-[#a3a3a3]">
-              {siteContent.contact.openingHours.map((time, i) => (
+              {t.contact.openingHours.map((time, i) => (
                 <li key={i} className="flex justify-between gap-4">
                   <span className="whitespace-nowrap">{time.day}</span>
                   <span className="text-[#fafafa] text-right whitespace-nowrap">{time.hours}</span>
@@ -80,16 +84,16 @@ export function Footer() {
 
         <div className="mt-12 md:mt-16 pt-6 md:pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm text-[#a3a3a3]">
           <div className="text-center md:text-left flex flex-col sm:flex-row gap-2 sm:gap-4 items-center">
-            <p>© {new Date().getFullYear()} {siteContent.global.name}. Wszelkie prawa zastrzeżone.</p>
+            <p>© {new Date().getFullYear()} {siteContent.global.name}. {t.footer.rights}</p>
             <p className="hidden sm:block text-white/20">|</p>
             <p>Created by <span className="text-[#B38728] font-bold tracking-wider">Andrzej Mich</span></p>
           </div>
           <div className="flex gap-4 md:gap-6">
             <Link href="/polityka-prywatnosci" className="hover:text-[#B38728] transition-colors whitespace-nowrap">
-              Polityka prywatności
+              {t.footer.privacy}
             </Link>
             <Link href="/regulamin" className="hover:text-[#B38728] transition-colors whitespace-nowrap">
-              Regulamin
+              {t.footer.terms}
             </Link>
           </div>
         </div>
